@@ -7,47 +7,9 @@
     combos {
         compatible = "zmk,combos";
 
-        auto_marenthesis {
-            bindings = <&auto_parenthesis>;
-            key-positions = <19 20>;
-        };
-
-        auto_bracket {
-            bindings = <&auto_bracket>;
-            key-positions = <33 34>;
-        };
-
-        auto_brace {
-            bindings = <&auto_brace>;
-            key-positions = <7 8>;
-        };
-
         IME_kana {
             bindings = <&kp LANG1>;
             key-positions = <43 19>;
-        };
-    };
-
-    macros {
-        auto_parenthesis: auto_kakko {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT_ARROW>;
-            label = "AUTO_KAKKO";
-        };
-
-        auto_bracket: auto_kagikakko {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT_ARROW>;
-            label = "AUTO_KAGIKAKKO";
-        };
-
-        auto_brace: auto_brace {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT_ARROW>;
-            label = "AUTO_BRACE";
         };
     };
 
