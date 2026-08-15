@@ -41,7 +41,7 @@
     input-processors =
         <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
         <&zip_y_scaler 6 5>,
-        <&zip_temp_layer 1 300>;
+        <&zip_temp_layer 1 500>;
 
     scroller {
         layers = <2>;
