@@ -61,7 +61,7 @@
             #binding-cells = <0>;
             bindings = <&kp LG(LS(N5))>, <&kp LG(LS(NUMBER_4))>;
 
-            tapping-term-ms = <100>;
+            tapping-term-ms = <150>;
         };
 
         window_right: window_right {
