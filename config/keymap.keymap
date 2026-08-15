@@ -39,7 +39,7 @@
 
         IME_lang1 {
             bindings = <&kp LANG1>;
-            key-positions = <45 42>;
+            key-positions = <45 43>;
         };
     };
 
