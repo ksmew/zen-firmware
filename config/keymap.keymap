@@ -107,10 +107,10 @@
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans  &trans     &trans     &trans              &trans               &trans     &trans     &trans     &trans     &trans
-&trans  &trans  &trans  &rclk_to0  &lclk_to0  &kp LG(LEFT_ARROW)  &kp RG(RIGHT_ARROW)  &lclk_to0  &rclk_to0  &trans     &trans     &trans
-&trans  &trans  &trans  &mkp RCLK  &mkp LCLK  &trans              &trans               &trans     &trans     &mkp LCLK  &mkp RCLK  &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &trans              &trans               &trans     &trans     &trans     &trans     &trans
+&trans  &trans  &trans  &trans     &trans     &trans              &trans               &trans     &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &mkp RCLK  &mkp LCLK  &kp LG(LEFT_ARROW)  &kp RG(RIGHT_ARROW)  &mkp LCLK  &mkp LCLK  &trans  &trans  &trans
+&trans  &trans  &trans  &trans     &trans     &trans              &trans               &trans     &trans     &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans     &trans     &trans              &trans               &trans     &trans     &trans  &trans  &trans
             >;
         };
 
