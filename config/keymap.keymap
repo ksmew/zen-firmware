@@ -7,9 +7,85 @@
     combos {
         compatible = "zmk,combos";
 
-        IME_kana {
-            bindings = <&kp LANG1>;
-            key-positions = <43 19>;
+        enter {
+            bindings = <&kp ENTER>;
+            key-positions = <16 15>;
+        };
+
+        backspace {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <15 14>;
+        };
+
+        enter2 {
+            bindings = <&kp ENTER>;
+            key-positions = <19 20>;
+        };
+
+        backspace2 {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <20 21>;
+        };
+
+        copy {
+            bindings = <&kp LG(C)>;
+            key-positions = <26 27>;
+        };
+
+        paste {
+            bindings = <&kp LG(V)>;
+            key-positions = <27 28>;
+        };
+
+        undo {
+            bindings = <&kp LG(Z)>;
+            key-positions = <26 25>;
+        };
+    };
+
+    macros {
+        lclk_to0: lclk_to0 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&mkp LCLK &to 0>;
+            label = "LCLK_TO0";
+        };
+
+        rclk_to0: rclk_to0 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&mkp RCLK &to 0>;
+            label = "RCLK_TO0";
+        };
+    };
+
+    behaviors {
+        screenshot: screenshot {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SCREENSHOT";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(N5))>, <&kp LG(LS(NUMBER_4))>;
+        };
+
+        ime: ime {
+            compatible = "zmk,behavior-tap-dance";
+            label = "IME";
+            #binding-cells = <0>;
+            bindings = <&kp LANG2>, <&kp LANG1>;
+        };
+
+        window_right: window_right {
+            compatible = "zmk,behavior-tap-dance";
+            label = "WINDOW_RIGHT";
+            #binding-cells = <0>;
+            bindings = <&kp RA(RG(RIGHT_ARROW))>, <&kp RA(RG(UP_ARROW))>;
+        };
+
+        window_left: window_left {
+            compatible = "zmk,behavior-tap-dance";
+            label = "WINDOW_LEFT";
+            #binding-cells = <0>;
+            bindings = <&kp LA(LG(LEFT_ARROW))>, <&kp LA(LG(DOWN_ARROW))>;
         };
     };
 
@@ -18,28 +94,28 @@
 
         layer_0 {
             bindings = <
-&kp ESCAPE             &kp Q         &kp W         &kp E          &kp R        &kp T      &kp Y           &kp U            &kp I            &kp O           &kp P           &kp BSPC
-&mt LEFT_CONTROL TAB   &kp A         &kp S         &kp D          &kp F        &kp G      &kp H           &kp J            &kp K            &kp L           &kp MINUS       &kp ENTER
-&mt LSHFT EXCLAMATION  &kp Z         &kp X         &kp C          &kp V        &kp B      &msc SCRL_LEFT  &msc SCRL_RIGHT  &kp N            &kp M           &kp COMMA       &mt RIGHT_GUI DOT  &kp UP_ARROW  &mt RSHFT QUESTION
-&mo 2                  &kp LEFT_ALT  &kp LEFT_GUI  &lt 4 AT_SIGN  &lt 1 SPACE  &kp LANG2  &msc SCRL_DOWN  &msc SCRL_UP     &lt 3 RG(SPACE)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
+&kp ESCAPE             &kp Q         &kp W         &kp E      &kp R          &kp T      &kp Y                 &kp U                  &kp I            &kp O           &kp P           &kp BSPC
+&mt LEFT_CONTROL TAB   &kp A         &kp S         &kp D      &kp F          &kp G      &kp H                 &kp J                  &kp K            &kp L           &kp MINUS       &kp ENTER
+&mt LSHFT EXCLAMATION  &kp Z         &kp X         &kp C      &kp V          &kp B      &window_left          &window_right          &kp N            &kp M           &kp COMMA       &mt RIGHT_GUI DOT  &kp UP_ARROW  &mt RSHFT QUESTION
+&screenshot            &kp LEFT_ALT  &kp LEFT_GUI  &kp LA(C)  &lt 2 AT_SIGN  &kp LANG2  &mt LEFT_SHIFT SPACE  &mt RIGHT_SHIFT SPACE  &lt 3 RG(SPACE)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
             >;
         };
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                &mkp LCLK  &mo 3             &mkp RCLK  &trans                 &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kp RG(LEFT_BRACKET)  &mkp MB1   &mkp MB3          &mkp MB2   &kp RG(RIGHT_BRACKET)  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                &trans     &kp LC(UP_ARROW)  &trans     &trans                 &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                &trans     &trans            &trans     &trans                 &trans
+&trans  &trans  &trans  &trans     &trans     &trans              &trans               &trans     &trans     &trans     &trans     &trans
+&trans  &trans  &trans  &rclk_to0  &lclk_to0  &kp LG(LEFT_ARROW)  &kp RG(RIGHT_ARROW)  &lclk_to0  &rclk_to0  &trans     &trans     &trans
+&trans  &trans  &trans  &mkp RCLK  &mkp LCLK  &trans              &trans               &trans     &trans     &mkp LCLK  &mkp RCLK  &trans  &trans  &trans
+&trans  &trans  &trans  &trans     &trans     &trans              &trans               &trans     &trans     &trans     &trans     &trans
             >;
         };
 
         layer_2 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &kp EQUAL    &kp PLUS      &kp MINUS     &kp ASTERISK  &kp SLASH     &kp BACKSPACE
-&trans  &trans  &trans  &trans  &trans  &trans  &kp PERCENT  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5
-&trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans        &trans        &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8   &kp NUMBER_9  &kp NUMBER_0
-&trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans        &trans        &trans        &trans        &trans
+&trans  &trans          &trans  &trans  &trans  &trans  &kp EQUAL    &kp PLUS      &kp MINUS     &kp ASTERISK  &kp SLASH     &kp BACKSPACE
+&trans  &kp LEFT_SHIFT  &trans  &trans  &trans  &trans  &kp PERCENT  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5
+&trans  &trans          &trans  &trans  &trans  &trans  &trans       &trans        &trans        &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8   &kp NUMBER_9  &kp NUMBER_0
+&trans  &trans          &trans  &trans  &trans  &trans  &trans       &trans        &trans        &trans        &trans        &trans
             >;
         };
 
