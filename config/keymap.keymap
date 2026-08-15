@@ -7,21 +7,6 @@
     combos {
         compatible = "zmk,combos";
 
-        copy {
-            bindings = <&kp LG(C)>;
-            key-positions = <26 27>;
-        };
-
-        paste {
-            bindings = <&kp LG(V)>;
-            key-positions = <27 28>;
-        };
-
-        undo {
-            bindings = <&kp LG(Z)>;
-            key-positions = <26 25>;
-        };
-
         escape {
             bindings = <&kp ESCAPE>;
             key-positions = <4 3>;
@@ -51,6 +36,20 @@
             #binding-cells = <0>;
             bindings = <&mkp RCLK &to 0>;
             label = "RCLK_TO0";
+        };
+
+        select1row: select1row {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RG(LEFT_ARROW) &kp RG(RS(RIGHT_ARROW))>;
+            label = "SELECT1ROW";
+        };
+
+        allDelete: allDelete {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RG(A) &kp BACKSPACE>;
+            label = "ALLDELETE";
         };
     };
 
@@ -88,10 +87,10 @@
 
         layer_0 {
             bindings = <
-&kp ESCAPE            &kp Q         &kp W         &kp E             &kp R                         &kp T        &kp Y                 &kp U                  &kp I            &kp O           &kp P           &kp BACKSPACE
-&mt LEFT_CONTROL TAB  &kp A         &kp S         &kp D             &kp F                         &kp G        &kp H                 &kp J                  &kp K            &kp L           &kp MINUS       &kp ENTER
-&lt 4 AT_SIGN         &kp Z         &kp X         &kp C             &kp V                         &kp B        &window_left          &window_right          &kp N            &kp M           &kp COMMA       &mt RIGHT_GUI DOT  &kp UP_ARROW  &mt RSHFT SLASH
-&screenshot           &kp LEFT_ALT  &kp LEFT_GUI  &kp LC(UP_ARROW)  &mt LS(LEFT_GUI) EXCLAMATION  &lt 2 SPACE  &mt LEFT_SHIFT LANG2  &mt RIGHT_SHIFT LANG1  &lt 3 RG(SPACE)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
+&kp ESCAPE            &kp Q          &kp W          &kp E             &kp R           &kp T        &kp Y                 &kp U                  &kp I            &kp O        &kp P                   &allDelete
+&mt LEFT_CONTROL TAB  &lt 4 A        &kp S          &mt LEFT_ALT D    &mt LEFT_GUI F  &kp G        &kp H                 &mt RIGHT_GUI J        &mt RIGHT_ALT K  &kp L        &kp MINUS               &kp BACKSPACE
+&kp AT_SIGN           &kp Z          &kp X          &kp C             &kp V           &kp B        &window_left          &window_right          &kp N            &kp M        &kp COMMA               &mt RIGHT_GUI DOT  &kp SLASH  &kp EXCLAMATION
+&screenshot           &kp LG(LA(N))  &kp LG(LS(N))  &kp LC(UP_ARROW)  &lt 5 ENTER     &lt 2 SPACE  &mt LEFT_SHIFT LANG2  &mt RIGHT_SHIFT LANG1  &lt 3 RG(A)      &select1row  &kp RG(RS(DOWN_ARROW))  &kp RG(SPACE)
             >;
         };
 
@@ -106,8 +105,8 @@
 
         layer_2 {
             bindings = <
-&trans  &kp SLASH       &kp ASTERISK  &kp MINUS  &kp PLUS    &trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans        &kp BACKSPACE
-&trans  &kp LEFT_SHIFT  &kp PERCENT   &kp COMMA  &kp PERIOD  &trans  &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL     &trans
+&trans  &kp SLASH       &kp ASTERISK  &kp MINUS  &kp PLUS    &trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans        &trans
+&trans  &kp LEFT_SHIFT  &kp PERCENT   &kp COMMA  &kp PERIOD  &trans  &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL     &kp BACKSPACE
 &trans  &kp LEFT_SHIFT  &trans        &trans     &trans      &trans  &trans  &trans        &trans        &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9   &trans  &trans
 &trans  &trans          &trans        &trans     &trans      &trans  &trans  &kp NUMBER_0  &trans        &trans        &trans        &trans
             >;
@@ -124,10 +123,19 @@
 
         layer_4 {
             bindings = <
-&bt BT_CLR  &trans  &trans  &trans  &trans  &trans  &trans        &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp TILDE         &kp PIPE           &kp BACKSPACE
-&trans      &trans  &trans  &trans  &trans  &trans  &trans        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON     &kp COLON          &trans
-&trans      &trans  &trans  &trans  &trans  &trans  &bt BT_SEL 0  &bt BT_SEL 2          &trans                 &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp SQT        &kp DOUBLE_QUOTES  &trans
-&trans      &trans  &trans  &trans  &trans  &trans  &bt BT_SEL 1  &bt BT_SEL 3          &kp HASH               &kp DOLLAR        &kp PERCENT        &kp AMPERSAND
+&bt BT_CLR  &trans  &trans  &trans  &trans  &trans  &kp DOLLAR    &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp TILDE         &kp PIPE           &trans
+&trans      &trans  &trans  &trans  &trans  &trans  &kp HASH      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON     &kp COLON          &trans
+&trans      &trans  &trans  &trans  &trans  &trans  &bt BT_SEL 0  &bt BT_SEL 2          &kp AMPERSAND          &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp SQT  &kp DOUBLE_QUOTES  &trans
+&trans      &trans  &trans  &trans  &trans  &trans  &bt BT_SEL 1  &bt BT_SEL 3          &trans                 &trans            &trans             &trans
+            >;
+        };
+
+        layer_5 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &kp RS(LEFT_ARROW)  &kp RS(DOWN_ARROW)  &kp RS(UP_ARROW)  &kp RS(RIGHT_ARROW)  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_ARROW      &kp DOWN_ARROW      &kp UP_ARROW      &kp RIGHT_ARROW      &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans              &trans              &trans            &trans               &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans              &trans              &trans            &trans               &trans  &trans
             >;
         };
     };
