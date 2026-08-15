@@ -88,10 +88,10 @@
 
         layer_0 {
             bindings = <
-&kp ESCAPE            &kp Q         &kp W         &kp E             &kp R             &kp T              &kp Y                 &kp U                  &kp I            &kp O           &kp P           &kp BACKSPACE
-&mt LEFT_CONTROL TAB  &kp A         &kp S         &kp D             &kp F             &kp G              &kp H                 &kp J                  &kp K            &kp L           &kp MINUS       &kp ENTER
-&lt 4 AT_SIGN         &kp Z         &kp X         &kp C             &kp V             &kp B              &kp SPACE             &kp SPACE              &kp N            &kp M           &kp COMMA       &mt RIGHT_GUI DOT  &kp UP_ARROW  &mt RSHFT SLASH
-&screenshot           &kp LEFT_ALT  &kp LEFT_GUI  &kp LC(UP_ARROW)  &kp LS(LEFT_GUI)  &lt 2 EXCLAMATION  &mt LEFT_SHIFT LANG2  &mt RIGHT_SHIFT LANG1  &lt 3 RG(SPACE)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
+&kp ESCAPE            &kp Q         &kp W         &kp E             &kp R                         &kp T        &kp Y                 &kp U                  &kp I            &kp O           &kp P           &kp BACKSPACE
+&mt LEFT_CONTROL TAB  &kp A         &kp S         &kp D             &kp F                         &kp G        &kp H                 &kp J                  &kp K            &kp L           &kp MINUS       &kp ENTER
+&lt 4 AT_SIGN         &kp Z         &kp X         &kp C             &kp V                         &kp B        &window_left          &window_right          &kp N            &kp M           &kp COMMA       &mt RIGHT_GUI DOT  &kp UP_ARROW  &mt RSHFT SLASH
+&screenshot           &kp LEFT_ALT  &kp LEFT_GUI  &kp LC(UP_ARROW)  &mt LS(LEFT_GUI) EXCLAMATION  &lt 2 SPACE  &mt LEFT_SHIFT LANG2  &mt RIGHT_SHIFT LANG1  &lt 3 RG(SPACE)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
             >;
         };
 
