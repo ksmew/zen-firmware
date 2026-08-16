@@ -26,6 +26,16 @@
             bindings = <&kp TAB>;
             key-positions = <4 3>;
         };
+
+        cmd_left {
+            bindings = <&kp RG(LEFT_ARROW)>;
+            key-positions = <7 8>;
+        };
+
+        cmd_right {
+            bindings = <&kp RG(RIGHT_ARROW)>;
+            key-positions = <9 8>;
+        };
     };
 
     macros {
