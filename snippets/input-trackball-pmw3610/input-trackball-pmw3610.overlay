@@ -1,5 +1,8 @@
 
 #include <dt-bindings/zmk/input_transform.h>
+#include <dt-bindings/zmk/keys.h>
+#include <mouse-gesture.dtsi>
+#include <dt-bindings/zmk/mouse-gesture.h>
 
 / {
     pmw3610_scroll_scaler: pmw3610_scroll_scaler {
@@ -8,6 +11,75 @@
         type = <INPUT_EV_REL>;
         codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
         track-remainders;
+    };
+
+    // レイヤー4用のジェスチャー設定(zip_mouse_gestureとは別に、同じ種類の処理をもう1つ用意する)
+    layer4_gesture: layer4_gesture {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        enable-eager-mode;
+        always-active;
+        suppress-movement;
+        // 4方向の判定精度を優先するため、既定値(200)のままにする。
+        // 値を小さくするほど短い動きで発動するが、その分わずかな動きのブレで
+        // 意図しない方向に判定されやすくなるため、ここでは下げない
+        stroke-size = <200>;
+        // gesture-cooldown-msは指定せず既定値(500ms)のまま
+
+        move_left {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LG(LA(LEFT_ARROW))>;   // Cmd+Option+←
+        };
+        move_right {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LG(LA(RIGHT_ARROW))>;  // Cmd+Option+→
+        };
+        move_up {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LG(LA(UP_ARROW))>;     // Cmd+Option+↑
+        };
+        move_down {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LG(LA(DOWN_ARROW))>;   // Cmd+Option+↓
+        };
+    };
+
+    // レイヤー3用のジェスチャー設定(左右のみ)
+    layer3_gesture: layer3_gesture {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        enable-eager-mode;
+        always-active;
+        suppress-movement;
+        // 左右2方向だけなので既定値(200)のままで問題ない
+        // gesture-cooldown-msは指定せず既定値(500ms)のまま
+
+        move_left {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LG(LEFT_ARROW)>;   // Cmd+←
+        };
+        move_right {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LG(RIGHT_ARROW)>;  // Cmd+→
+        };
+    };
+};
+
+&zip_mouse_gesture {
+    enable-eager-mode;
+    always-active;                // レイヤー5に入っている間、起動キーなしで自動的にジェスチャー認識をONにする
+    suppress-movement;            // ジェスチャー中はカーソルを動かさない(素通しでマウスが動いてしまうのを防ぐ)
+    stroke-size = <100>;           // 1回のジェスチャーと認識される移動量の閾値。小さくするほど、長くスーッと動かした時に短い距離で連続して切り替わるようになる
+    gesture-cooldown-ms = <120>;   // 連続発火を許可する最短間隔(時間ベース)。スーッと動かした時にこの時間が経つまで次の発動をブロックしてしまうため、stroke-sizeだけでなくこちらも短縮。ただしシャッ!という一瞬の動き全体はこれより短い時間で終わる想定のため、1回しか発動しない挙動は維持されるはず
+
+    prev_tab {
+        pattern = <GESTURE_LEFT>;
+        bindings = <&kp LC(LS(TAB))>;  // Ctrl+Shift+Tab (Chromeで左のタブへ)
+    };
+
+    next_tab {
+        pattern = <GESTURE_RIGHT>;
+        bindings = <&kp LC(TAB)>;      // Ctrl+Tab (Chromeで右のタブへ)
     };
 };
 
@@ -49,7 +121,40 @@
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
             <&zip_x_scaler 0 1>,
             <&zip_xy_to_scroll_mapper>,
-            <&pmw3610_scroll_scaler 1 20>;
+            <&pmw3610_scroll_scaler 1 30>;  // 感度を1/20倍から1/30倍にさらに落とす
         process-next;
+    };
+
+    hscroller {
+        layers = <6>;
+        input-processors =
+            // センサーの生のX軸(=物理的な上下方向の動き)を反転せずそのままマッパーのX側(=横スクロール)に渡す
+            <&zip_y_scaler 0 1>,
+            <&zip_xy_to_scroll_mapper>,
+            <&pmw3610_scroll_scaler 1 40>;  // 縦スクロール(1/30倍)の3/4倍(=3/120=1/40倍)を維持したまま感度を落とす
+        process-next;
+    };
+
+    gesture {
+        layers = <5>;
+        input-processors =
+            // 通常のカーソル移動と同じXY_SWAP補正をかけてから渡すことで、
+            // 物理的な左右の動きがジェスチャー判定の「左右」と一致するようにする
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
+            <&zip_mouse_gesture>;
+    };
+
+    gesture_layer4 {
+        layers = <4>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
+            <&layer4_gesture>;
+    };
+
+    gesture_layer3 {
+        layers = <3>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
+            <&layer3_gesture>;
     };
 };
