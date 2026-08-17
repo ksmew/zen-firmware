@@ -32,6 +32,57 @@
     };
 };
 
+// レイヤー4用のジェスチャー設定(zip_mouse_gestureとは別に、同じ種類の処理をもう1つ用意する)
+layer4_gesture: layer4_gesture {
+    compatible = "zmk,input-processor-mouse-gesture";
+    #input-processor-cells = <0>;
+    enable-eager-mode;
+    always-active;
+    suppress-movement;
+    // 4方向の判定精度を優先するため、既定値(200)のままにする。
+    // 値を小さくするほど短い動きで発動するが、その分わずかな動きのブレで
+    // 意図しない方向に判定されやすくなるため、ここでは下げない
+    stroke-size = <200>;
+    // gesture-cooldown-msは指定せず既定値(500ms)のまま
+
+    move_left {
+        pattern = <GESTURE_LEFT>;
+        bindings = <&kp LG(LA(LEFT_ARROW))>;   // Cmd+Option+←
+    };
+    move_right {
+        pattern = <GESTURE_RIGHT>;
+        bindings = <&kp LG(LA(RIGHT_ARROW))>;  // Cmd+Option+→
+    };
+    move_up {
+        pattern = <GESTURE_UP>;
+        bindings = <&kp LG(LA(UP_ARROW))>;     // Cmd+Option+↑
+    };
+    move_down {
+        pattern = <GESTURE_DOWN>;
+        bindings = <&kp LG(LA(DOWN_ARROW))>;   // Cmd+Option+↓
+    };
+};
+
+// レイヤー3用のジェスチャー設定(左右のみ)
+layer3_gesture: layer3_gesture {
+    compatible = "zmk,input-processor-mouse-gesture";
+    #input-processor-cells = <0>;
+    enable-eager-mode;
+    always-active;
+    suppress-movement;
+    // 左右2方向だけなので既定値(200)のままで問題ない
+    // gesture-cooldown-msは指定せず既定値(500ms)のまま
+
+    move_left {
+        pattern = <GESTURE_LEFT>;
+        bindings = <&kp LG(LEFT_ARROW)>;   // Cmd+←
+    };
+    move_right {
+        pattern = <GESTURE_RIGHT>;
+        bindings = <&kp LG(RIGHT_ARROW)>;  // Cmd+→
+    };
+};
+
 &spi0 {
     status = "okay";
     compatible = "nordic,nrf-spim";
@@ -80,7 +131,7 @@
             // センサーの生のX軸(=物理的な上下方向の動き)を反転せずそのままマッパーのX側(=横スクロール)に渡す
             <&zip_y_scaler 0 1>,
             <&zip_xy_to_scroll_mapper>,
-            <&pmw3610_scroll_scaler 1 20>;
+            <&pmw3610_scroll_scaler 3 80>;  // 縦スクロール(1/20倍)の3/4倍(=3/80倍)に感度を落とす
         process-next;
     };
 
@@ -91,5 +142,19 @@
             // 物理的な左右の動きがジェスチャー判定の「左右」と一致するようにする
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
             <&zip_mouse_gesture>;
+    };
+
+    gesture_layer4 {
+        layers = <4>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
+            <&layer4_gesture>;
+    };
+
+    gesture_layer3 {
+        layers = <3>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
+            <&layer3_gesture>;
     };
 };
