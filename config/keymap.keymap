@@ -181,7 +181,7 @@
         left_click: left_click {
             compatible = "zmk,behavior-hold-tap";
             label = "LEFT_CLICK";
-            bindings = <&mkp>, <&kp>;
+            bindings = <&kp>, <&mkp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <280>;
@@ -200,7 +200,7 @@
 &screenshot    &kp Q                  &kp W                  &kp E                         &kp R                         &kp T                             &kp Y                               &kp U                           &kp I                           &kp O                   &kp P          &kp LC(UP_ARROW)
 &kp LA(G)      &home_row_lt_left 5 A  &home_row_lt_left 4 S  &home_row_mt_left LEFT_ALT D  &home_row_mt_left LEFT_GUI F  &home_row_mt_left LEFT_CONTROL G  &home_row_mt_right RIGHT_CONTROL H  &home_row_mt_right RIGHT_GUI J  &home_row_mt_right RIGHT_ALT K  &home_row_lt_right 3 L  &kp MINUS      &kp RA(C)
 &kp LA(S)      &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &kp LG(MINUS)                       &kp RG(PLUS)                    &kp N                           &kp M                   &kp COMMA      &kp PERIOD        &kp SLASH  &kp LA(N)
-&kp LG(LC(Q))  &kp K_MUTE             &kp C_VOLUME_DOWN      &lt 6 C_VOLUME_UP             &lt 2 SPACE                   &kp BACKSPACE                     &left_click LCLK LEFT_SHIFT         &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RG(RS(N))           &kp RG(RA(N))  &kp RG(RA(U))
+&kp LG(LC(Q))  &kp K_MUTE             &kp C_VOLUME_DOWN      &lt 6 C_VOLUME_UP             &lt 2 SPACE                   &kp BACKSPACE                     &left_click LEFT_SHIFT LCLK         &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RG(RS(N))           &kp RG(RA(N))  &kp RG(RA(U))
             >;
         };
 
