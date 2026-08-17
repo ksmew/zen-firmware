@@ -121,7 +121,7 @@
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
             <&zip_x_scaler 0 1>,
             <&zip_xy_to_scroll_mapper>,
-            <&pmw3610_scroll_scaler 1 20>;
+            <&pmw3610_scroll_scaler 1 30>;  // 感度を1/20倍から1/30倍にさらに落とす
         process-next;
     };
 
@@ -131,7 +131,7 @@
             // センサーの生のX軸(=物理的な上下方向の動き)を反転せずそのままマッパーのX側(=横スクロール)に渡す
             <&zip_y_scaler 0 1>,
             <&zip_xy_to_scroll_mapper>,
-            <&pmw3610_scroll_scaler 3 80>;  // 縦スクロール(1/20倍)の3/4倍(=3/80倍)に感度を落とす
+            <&pmw3610_scroll_scaler 1 40>;  // 縦スクロール(1/30倍)の3/4倍(=3/120=1/40倍)を維持したまま感度を落とす
         process-next;
     };
 
