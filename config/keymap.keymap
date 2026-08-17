@@ -29,12 +29,17 @@
 
         cmd_left {
             bindings = <&kp RG(LEFT_ARROW)>;
-            key-positions = <7 8>;
+            key-positions = <15 14>;
         };
 
         cmd_right {
             bindings = <&kp RG(RIGHT_ARROW)>;
-            key-positions = <9 8>;
+            key-positions = <20 21>;
+        };
+
+        right_click {
+            bindings = <&mkp RCLK>;
+            key-positions = <44 45>;
         };
     };
 
@@ -79,6 +84,20 @@
             #binding-cells = <0>;
             bindings = <&kp LANG2 &kp HASH &kp HASH &kp HASH &kp HASH &kp SPACE &kp LANG1>;
             label = "H4";
+        };
+
+        checkbox: checkbox {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG2 &kp MINUS &kp SPACE &kp LEFT_BRACKET &kp SPACE &kp RIGHT_BRACKET &kp SPACE &kp LANG1>;
+            label = "CHECKBOX";
+        };
+
+        line: line {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG2 &kp MINUS &kp MINUS &kp MINUS &kp RETURN &kp LANG1>;
+            label = "LINE";
         };
     };
 
@@ -158,6 +177,19 @@
             hold-trigger-on-release;
             hold-trigger-key-positions = <6 6 7 8 9 10 11 18 19 20 21 22 23 32 33 34 35 36 37 46 47 48 49 31 45>;
         };
+
+        left_click: left_click {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LEFT_CLICK";
+            bindings = <&mkp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <100>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+        };
     };
 
     keymap {
@@ -165,19 +197,19 @@
 
         layer_0 {
             bindings = <
-&screenshot    &kp Q                  &kp W                  &kp E                         &kp R                         &kp T                             &kp Y                               &kp U                           &kp I                           &kp O                   &kp P                       &kp LC(UP_ARROW)
-&kp LA(G)      &home_row_lt_left 5 A  &home_row_lt_left 4 S  &home_row_mt_left LEFT_ALT D  &home_row_mt_left LEFT_GUI F  &home_row_mt_left LEFT_CONTROL G  &home_row_mt_right RIGHT_CONTROL H  &home_row_mt_right RIGHT_GUI J  &home_row_mt_right RIGHT_ALT K  &home_row_lt_right 3 L  &home_row_lt_right 3 MINUS  &kp RA(C)
-&kp LA(S)      &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &kp LG(MINUS)                       &kp RG(PLUS)                    &kp N                           &kp M                   &kp COMMA                   &kp PERIOD        &kp SLASH  &kp LA(N)
-&kp LG(LS(T))  &kp LG(Z)              &kp LG(C)              &lt 6 LG(V)                   &lt 2 SPACE                   &kp BACKSPACE                     &mt LEFT_SHIFT SPACE                &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RG(RS(N))           &kp RG(RA(N))               &kp RG(RA(U))
+&screenshot    &kp Q                  &kp W                  &kp E                         &kp R                         &kp T                             &kp Y                               &kp U                           &kp I                           &kp O                   &kp P          &kp LC(UP_ARROW)
+&kp LA(G)      &home_row_lt_left 5 A  &home_row_lt_left 4 S  &home_row_mt_left LEFT_ALT D  &home_row_mt_left LEFT_GUI F  &home_row_mt_left LEFT_CONTROL G  &home_row_mt_right RIGHT_CONTROL H  &home_row_mt_right RIGHT_GUI J  &home_row_mt_right RIGHT_ALT K  &home_row_lt_right 3 L  &kp MINUS      &kp RA(C)
+&kp LA(S)      &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &kp LG(MINUS)                       &kp RG(PLUS)                    &kp N                           &kp M                   &kp COMMA      &kp PERIOD        &kp SLASH  &kp LA(N)
+&kp LG(LS(T))  &kp LG(Z)              &kp LG(C)              &lt 6 LG(V)                   &lt 2 SPACE                   &kp BACKSPACE                     &left_click LCLK LEFT_SHIFT         &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RG(RS(N))           &kp RG(RA(N))  &kp RG(RA(U))
             >;
         };
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans     &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &mkp RCLK  &mkp LCLK  &trans  &trans  &mkp LCLK  &mkp LCLK  &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans     &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -219,10 +251,10 @@
 
         layer_6 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                  &h1                     &h2                   &h3                      &h4           &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kp LA(LG(LEFT_ARROW))  &kp LG(LA(DOWN_ARROW))  &kp LG(LA(UP_ARROW))  &kp LG(LA(RIGHT_ARROW))  &trans        &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans                  &trans                &bullet                  &number_list  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans                  &trans                &trans                   &trans        &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans        &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &bullet  &number_list  &checkbox  &line   &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans        &h1        &h2     &h3     &h4  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans        &trans     &trans  &trans
             >;
         };
     };
