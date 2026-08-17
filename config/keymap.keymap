@@ -36,6 +36,26 @@
             bindings = <&kp RG(RIGHT_ARROW)>;
             key-positions = <9 8>;
         };
+
+        window_left {
+            bindings = <&kp RA(RG(LEFT_ARROW))>;
+            key-positions = <42 18>;
+        };
+
+        window_center {
+            bindings = <&kp RA(RG(DOWN_ARROW))>;
+            key-positions = <42 19>;
+        };
+
+        window_mx {
+            bindings = <&kp RA(RG(UP_ARROW))>;
+            key-positions = <42 20>;
+        };
+
+        window_right {
+            bindings = <&kp RA(RG(RIGHT_ARROW))>;
+            key-positions = <42 21>;
+        };
     };
 
     macros {
@@ -92,24 +112,6 @@
             tapping-term-ms = <150>;
         };
 
-        window_right: window_right {
-            compatible = "zmk,behavior-tap-dance";
-            label = "WINDOW_RIGHT";
-            #binding-cells = <0>;
-            bindings = <&kp RA(RG(RIGHT_ARROW))>, <&kp RA(RG(UP_ARROW))>;
-
-            tapping-term-ms = <150>;
-        };
-
-        window_left: window_left {
-            compatible = "zmk,behavior-tap-dance";
-            label = "WINDOW_LEFT";
-            #binding-cells = <0>;
-            bindings = <&kp LA(LG(LEFT_ARROW))>, <&kp LA(LG(DOWN_ARROW))>;
-
-            tapping-term-ms = <150>;
-        };
-
         lt_tab: lt_tab {
             compatible = "zmk,behavior-hold-tap";
             label = "LT_TAB";
@@ -127,7 +129,7 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <289>;
+            tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <100>;
             flavor = "balanced";
@@ -141,7 +143,7 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <289>;
+            tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <100>;
             flavor = "balanced";
@@ -155,7 +157,7 @@
             bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <289>;
+            tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <100>;
             flavor = "balanced";
@@ -169,7 +171,7 @@
             bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <289>;
+            tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <100>;
             flavor = "balanced";
@@ -183,37 +185,37 @@
 
         layer_0 {
             bindings = <
-&screenshot    &kp Q                  &kp W                  &kp E                         &kp R                         &kp T                             &kp Y                               &kp U                           &kp I                           &kp O                   &kp P                       &kp RA(V)
+&trans         &kp Q                  &kp W                  &kp E                         &kp R                         &kp T                             &kp Y                               &kp U                           &kp I                           &kp O                   &kp P                       &kp RA(V)
 &kp LA(LC(N))  &home_row_lt_left 5 A  &home_row_lt_left 4 S  &home_row_mt_left LEFT_ALT D  &home_row_mt_left LEFT_GUI F  &home_row_mt_left LEFT_CONTROL G  &home_row_mt_right RIGHT_CONTROL H  &home_row_mt_right RIGHT_GUI J  &home_row_mt_right RIGHT_ALT K  &home_row_lt_right 3 L  &home_row_lt_right 3 MINUS  &kp RA(H)
-&kp LG(LA(N))  &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &window_left                        &window_right                   &kp N                           &kp M                   &kp COMMA                   &kp PERIOD  &kp SLASH  &kp RG(SPACE)
-&deleteAll     &copyBelow             &copy1row              &copyAll                      &lt 2 LC(UP_ARROW)            &kp BACKSPACE                     &mt LEFT_SHIFT SPACE                &mt RIGHT_SHIFT ENTER           &kp RA(G)                       &kp RA(C)               &kp RA(N)                   &kp RA(S)
+&kp LG(LA(N))  &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &kp LG(MINUS)                       &kp RG(PLUS)                    &kp N                           &kp M                   &kp COMMA                   &kp PERIOD  &kp SLASH  &kp RG(SPACE)
+&deleteAll     &copyBelow             &copy1row              &copyAll                      &lt 2 SPACE                   &kp BACKSPACE                     &mt LEFT_SHIFT SPACE                &mt RIGHT_SHIFT ENTER           &kp RA(G)                       &kp RA(C)               &kp RA(N)                   &kp RA(S)
             >;
         };
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans  &trans     &trans     &trans              &trans               &trans     &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &mkp RCLK  &mkp LCLK  &kp LG(LEFT_ARROW)  &kp RG(RIGHT_ARROW)  &mkp LCLK  &mkp LCLK  &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &trans              &trans               &trans     &trans     &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &trans              &trans               &trans     &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans     &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &mkp RCLK  &mkp LCLK  &trans  &trans  &mkp LCLK  &mkp LCLK  &trans  &trans  &trans
+&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans     &trans     &trans  &trans  &trans
             >;
         };
 
         layer_2 {
             bindings = <
-&trans  &kp SLASH       &kp ASTERISK  &kp MINUS  &kp PLUS    &trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans        &trans
-&trans  &kp DOLLAR      &kp PERCENT   &kp COMMA  &kp PERIOD  &trans  &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL     &kp BACKSPACE
-&trans  &kp LEFT_SHIFT  &trans        &trans     &trans      &trans  &trans  &trans        &trans        &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9   &trans  &trans
-&trans  &trans          &trans        &trans     &trans      &trans  &trans  &kp NUMBER_0  &trans        &trans        &trans        &trans
+&trans  &kp SLASH   &kp ASTERISK  &kp MINUS  &kp PLUS    &trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp ASTERISK  &trans
+&trans  &kp DOLLAR  &kp PERCENT   &kp COMMA  &kp PERIOD  &trans  &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL     &kp BACKSPACE
+&trans  &trans      &trans        &trans     &trans      &trans  &trans  &trans        &trans        &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9   &kp PLUS  &trans
+&trans  &trans      &trans        &trans     &trans      &trans  &trans  &kp NUMBER_0  &trans        &trans        &trans        &trans
             >;
         };
 
         layer_3 {
             bindings = <
-&trans  &trans  &kp F3   &kp F2   &kp F1   &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp F6   &kp F5   &kp F4   &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp F9   &kp F8   &kp F7   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp F12  &kp F11  &kp F10  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp F4   &kp F3   &kp F2   &kp F1  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp F8   &kp F7   &kp F6   &kp F5  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp F12  &kp F11  &kp F10  &kp F9  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans   &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
