@@ -12,6 +12,57 @@
         codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
         track-remainders;
     };
+
+    // レイヤー4用のジェスチャー設定(zip_mouse_gestureとは別に、同じ種類の処理をもう1つ用意する)
+    layer4_gesture: layer4_gesture {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        enable-eager-mode;
+        always-active;
+        suppress-movement;
+        // 4方向の判定精度を優先するため、既定値(200)のままにする。
+        // 値を小さくするほど短い動きで発動するが、その分わずかな動きのブレで
+        // 意図しない方向に判定されやすくなるため、ここでは下げない
+        stroke-size = <200>;
+        // gesture-cooldown-msは指定せず既定値(500ms)のまま
+
+        move_left {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LG(LA(LEFT_ARROW))>;   // Cmd+Option+←
+        };
+        move_right {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LG(LA(RIGHT_ARROW))>;  // Cmd+Option+→
+        };
+        move_up {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LG(LA(UP_ARROW))>;     // Cmd+Option+↑
+        };
+        move_down {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LG(LA(DOWN_ARROW))>;   // Cmd+Option+↓
+        };
+    };
+
+    // レイヤー3用のジェスチャー設定(左右のみ)
+    layer3_gesture: layer3_gesture {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        enable-eager-mode;
+        always-active;
+        suppress-movement;
+        // 左右2方向だけなので既定値(200)のままで問題ない
+        // gesture-cooldown-msは指定せず既定値(500ms)のまま
+
+        move_left {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LG(LEFT_ARROW)>;   // Cmd+←
+        };
+        move_right {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LG(RIGHT_ARROW)>;  // Cmd+→
+        };
+    };
 };
 
 &zip_mouse_gesture {
@@ -29,57 +80,6 @@
     next_tab {
         pattern = <GESTURE_RIGHT>;
         bindings = <&kp LC(TAB)>;      // Ctrl+Tab (Chromeで右のタブへ)
-    };
-};
-
-// レイヤー4用のジェスチャー設定(zip_mouse_gestureとは別に、同じ種類の処理をもう1つ用意する)
-layer4_gesture: layer4_gesture {
-    compatible = "zmk,input-processor-mouse-gesture";
-    #input-processor-cells = <0>;
-    enable-eager-mode;
-    always-active;
-    suppress-movement;
-    // 4方向の判定精度を優先するため、既定値(200)のままにする。
-    // 値を小さくするほど短い動きで発動するが、その分わずかな動きのブレで
-    // 意図しない方向に判定されやすくなるため、ここでは下げない
-    stroke-size = <200>;
-    // gesture-cooldown-msは指定せず既定値(500ms)のまま
-
-    move_left {
-        pattern = <GESTURE_LEFT>;
-        bindings = <&kp LG(LA(LEFT_ARROW))>;   // Cmd+Option+←
-    };
-    move_right {
-        pattern = <GESTURE_RIGHT>;
-        bindings = <&kp LG(LA(RIGHT_ARROW))>;  // Cmd+Option+→
-    };
-    move_up {
-        pattern = <GESTURE_UP>;
-        bindings = <&kp LG(LA(UP_ARROW))>;     // Cmd+Option+↑
-    };
-    move_down {
-        pattern = <GESTURE_DOWN>;
-        bindings = <&kp LG(LA(DOWN_ARROW))>;   // Cmd+Option+↓
-    };
-};
-
-// レイヤー3用のジェスチャー設定(左右のみ)
-layer3_gesture: layer3_gesture {
-    compatible = "zmk,input-processor-mouse-gesture";
-    #input-processor-cells = <0>;
-    enable-eager-mode;
-    always-active;
-    suppress-movement;
-    // 左右2方向だけなので既定値(200)のままで問題ない
-    // gesture-cooldown-msは指定せず既定値(500ms)のまま
-
-    move_left {
-        pattern = <GESTURE_LEFT>;
-        bindings = <&kp LG(LEFT_ARROW)>;   // Cmd+←
-    };
-    move_right {
-        pattern = <GESTURE_RIGHT>;
-        bindings = <&kp LG(RIGHT_ARROW)>;  // Cmd+→
     };
 };
 
