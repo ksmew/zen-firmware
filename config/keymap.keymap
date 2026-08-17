@@ -36,26 +36,6 @@
             bindings = <&kp RG(RIGHT_ARROW)>;
             key-positions = <9 8>;
         };
-
-        window_left {
-            bindings = <&kp RA(RG(LEFT_ARROW))>;
-            key-positions = <42 18>;
-        };
-
-        window_center {
-            bindings = <&kp RA(RG(DOWN_ARROW))>;
-            key-positions = <42 19>;
-        };
-
-        window_mx {
-            bindings = <&kp RA(RG(UP_ARROW))>;
-            key-positions = <42 20>;
-        };
-
-        window_right {
-            bindings = <&kp RA(RG(RIGHT_ARROW))>;
-            key-positions = <42 21>;
-        };
     };
 
     macros {
@@ -71,6 +51,34 @@
             #binding-cells = <0>;
             bindings = <&kp LANG2 &kp NUMBER_1 &kp PERIOD &kp SPACE &kp LANG1>;
             label = "NUMBER_LIST";
+        };
+
+        h1: h1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG2 &kp HASH &kp SPACE &kp LANG1>;
+            label = "H1";
+        };
+
+        h2: h2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG2 &kp HASH &kp HASH &kp SPACE &kp LANG1>;
+            label = "H2";
+        };
+
+        h3: h3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG2 &kp HASH &kp HASH &kp HASH &kp SPACE &kp LANG1>;
+            label = "H3";
+        };
+
+        h4: h4 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG2 &kp HASH &kp HASH &kp HASH &kp HASH &kp SPACE &kp LANG1>;
+            label = "H4";
         };
     };
 
@@ -211,10 +219,10 @@
 
         layer_6 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans        &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans        &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bullet  &number_list  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans        &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                  &h1                     &h2                   &h3                      &h4           &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp LA(LG(LEFT_ARROW))  &kp LG(LA(DOWN_ARROW))  &kp LG(LA(UP_ARROW))  &kp LG(LA(RIGHT_ARROW))  &trans        &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans                  &trans                &bullet                  &number_list  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans                  &trans                &trans                   &trans        &trans
             >;
         };
     };
