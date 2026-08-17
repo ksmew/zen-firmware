@@ -18,8 +18,8 @@
     enable-eager-mode;
     always-active;                // レイヤー5に入っている間、起動キーなしで自動的にジェスチャー認識をONにする
     suppress-movement;            // ジェスチャー中はカーソルを動かさない(素通しでマウスが動いてしまうのを防ぐ)
-    stroke-size = <150>;          // 1回のジェスチャーと認識される移動量の閾値(既定200 → 少し短めにして反応させやすくする)
-    gesture-cooldown-ms = <200>;  // 連続発火を許可する間隔(既定500 → 短くする)。長く振ると閾値を複数回超えてタブが連続で切り替わり、短く振ると1回だけになる、という挙動を狙う
+    stroke-size = <100>;           // 1回のジェスチャーと認識される移動量の閾値。小さくするほど、長くスーッと動かした時に短い距離で連続して切り替わるようになる
+    gesture-cooldown-ms = <200>;   // 連続発火を許可する間隔。素早いシャッ!の1発だけでは動きが速すぎてこの間隔を跨がないため1回しか発動しない、という挙動を維持するためここは変更しない
 
     prev_tab {
         pattern = <GESTURE_LEFT>;
@@ -77,9 +77,7 @@
     hscroller {
         layers = <6>;
         input-processors =
-            // XY_SWAPを外し、Y_INVERTの代わりにX_INVERTにすることで、
-            // センサーの生のX軸(=物理的な上下方向の動き)をそのままマッパーのX側(=横スクロール)に渡す
-            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+            // センサーの生のX軸(=物理的な上下方向の動き)を反転せずそのままマッパーのX側(=横スクロール)に渡す
             <&zip_y_scaler 0 1>,
             <&zip_xy_to_scroll_mapper>,
             <&pmw3610_scroll_scaler 1 20>;
