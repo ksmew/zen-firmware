@@ -13,17 +13,6 @@
         track-remainders;
     };
 
-    // 横スクロール専用のスケーラー。縦(pmw3610_scroll_scaler)と同じノードを
-    // 別倍率で共有すると、track-remaindersの端数カウンターが縦横で
-    // 混ざってしまうため、独立したノードとして分離する
-    pmw3610_hscroll_scaler: pmw3610_hscroll_scaler {
-        compatible = "zmk,input-processor-scaler";
-        #input-processor-cells = <2>;
-        type = <INPUT_EV_REL>;
-        codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
-        track-remainders;
-    };
-
     // レイヤー4用のジェスチャー設定(zip_mouse_gestureとは別に、同じ種類の処理をもう1つ用意する)
     layer4_gesture: layer4_gesture {
         compatible = "zmk,input-processor-mouse-gesture";
@@ -142,7 +131,7 @@
             // センサーの生のX軸(=物理的な上下方向の動き)を反転せずそのままマッパーのX側(=横スクロール)に渡す
             <&zip_y_scaler 0 1>,
             <&zip_xy_to_scroll_mapper>,
-            <&pmw3610_hscroll_scaler 3 80>;  // 縦スクロール(1/20倍)の3/4倍(=3/80倍)に感度を落とす
+            <&pmw3610_scroll_scaler 3 80>;  // 縦スクロール(1/20倍)の3/4倍(=3/80倍)に感度を落とす
         process-next;
     };
 
