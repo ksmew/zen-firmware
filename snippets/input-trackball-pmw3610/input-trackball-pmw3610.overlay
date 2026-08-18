@@ -44,6 +44,27 @@
         };
     };
 
+    // レイヤー4用のジェスチャー設定(アプリ切り替え、左右のみ)。
+    // オプションはレイヤー5のタブ切り替えジェスチャー(zip_mouse_gesture)と全て同じ
+    layer4_gesture: layer4_gesture {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        enable-eager-mode;
+        always-active;
+        suppress-movement;
+        stroke-size = <100>;
+        gesture-cooldown-ms = <120>;
+
+        prev_app {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LG(LS(TAB))>;  // Cmd+Shift+Tab (前のアプリへ)
+        };
+        next_app {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LG(TAB)>;      // Cmd+Tab (次のアプリへ)
+        };
+    };
+
     // レイヤー3用のジェスチャー設定(左右のみ)
     layer3_gesture: layer3_gesture {
         compatible = "zmk,input-processor-mouse-gesture";
@@ -146,6 +167,13 @@
             // 物理的な左右の動きがジェスチャー判定の「左右」と一致するようにする
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
             <&zip_mouse_gesture>;
+    };
+
+    gesture_layer4 {
+        layers = <4>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
+            <&layer4_gesture>;
     };
 
     gesture_layer7 {
