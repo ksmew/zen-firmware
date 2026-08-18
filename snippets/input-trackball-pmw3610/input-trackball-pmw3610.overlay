@@ -140,8 +140,7 @@
         layers = <2>;
         input-processors =
             // XY_SWAPを外すことで、センサーの生のY軸(=物理的な左右方向の動き)を
-            // 縦スクロールの入力として使う
-            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
+            // 縦スクロールの入力として使う。Y_INVERTを外して向きを反転する
             <&zip_x_scaler 0 1>,
             <&zip_xy_to_scroll_mapper>,
             <&pmw3610_scroll_scaler 1 30>;  // 感度を1/20倍から1/30倍にさらに落とす
@@ -152,8 +151,8 @@
         layers = <6>;
         input-processors =
             // XY_SWAPを追加することで、センサーの生のY軸(=物理的な左右方向の動き)を
-            // 横スクロールの入力として使う
-            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
+            // 横スクロールの入力として使う。X_INVERTを追加して向きを反転する
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
             <&zip_y_scaler 0 1>,
             <&zip_xy_to_scroll_mapper>,
             <&pmw3610_scroll_scaler 1 40>;  // 縦スクロール(1/30倍)の3/4倍(=3/120=1/40倍)を維持したまま感度を落とす
