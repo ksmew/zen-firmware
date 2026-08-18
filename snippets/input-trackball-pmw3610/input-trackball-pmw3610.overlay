@@ -13,8 +13,8 @@
         track-remainders;
     };
 
-    // レイヤー4用のジェスチャー設定(zip_mouse_gestureとは別に、同じ種類の処理をもう1つ用意する)
-    layer4_gesture: layer4_gesture {
+    // レイヤー7用のジェスチャー設定(zip_mouse_gestureとは別に、同じ種類の処理をもう1つ用意する)
+    layer7_gesture: layer7_gesture {
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
         enable-eager-mode;
@@ -24,7 +24,7 @@
         // 値を小さくするほど短い動きで発動するが、その分わずかな動きのブレで
         // 意図しない方向に判定されやすくなるため、ここでは下げない
         stroke-size = <200>;
-        // gesture-cooldown-msは指定せず既定値(500ms)のまま
+        gesture-cooldown-ms = <150>;
 
         move_left {
             pattern = <GESTURE_LEFT>;
@@ -118,7 +118,9 @@
     scroller {
         layers = <2>;
         input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
+            // XY_SWAPを外すことで、センサーの生のY軸(=物理的な左右方向の動き)を
+            // 縦スクロールの入力として使う
+            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
             <&zip_x_scaler 0 1>,
             <&zip_xy_to_scroll_mapper>,
             <&pmw3610_scroll_scaler 1 30>;  // 感度を1/20倍から1/30倍にさらに落とす
@@ -128,7 +130,9 @@
     hscroller {
         layers = <6>;
         input-processors =
-            // センサーの生のX軸(=物理的な上下方向の動き)を反転せずそのままマッパーのX側(=横スクロール)に渡す
+            // XY_SWAPを追加することで、センサーの生のY軸(=物理的な左右方向の動き)を
+            // 横スクロールの入力として使う
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
             <&zip_y_scaler 0 1>,
             <&zip_xy_to_scroll_mapper>,
             <&pmw3610_scroll_scaler 1 40>;  // 縦スクロール(1/30倍)の3/4倍(=3/120=1/40倍)を維持したまま感度を落とす
@@ -144,11 +148,11 @@
             <&zip_mouse_gesture>;
     };
 
-    gesture_layer4 {
-        layers = <4>;
+    gesture_layer7 {
+        layers = <7>;
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
-            <&layer4_gesture>;
+            <&layer7_gesture>;
     };
 
     gesture_layer3 {
