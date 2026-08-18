@@ -13,34 +13,25 @@
         track-remainders;
     };
 
-    // レイヤー7用のジェスチャー設定(zip_mouse_gestureとは別に、同じ種類の処理をもう1つ用意する)
+    // レイヤー7用のジェスチャー設定。SQTキーのホールドでCmdが押しっぱなしに
+    // なる仕組み(keymap.keymap側のcmd_layer7マクロ)と組み合わせて使うため、
+    // ここでは素のTAB/Shift+TABを送り、Cmd+Tab/Cmd+Shift+Tabとして機能させる
     layer7_gesture: layer7_gesture {
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
         enable-eager-mode;
         always-active;
         suppress-movement;
-        // 4方向の判定精度を優先するため、既定値(200)のままにする。
-        // 値を小さくするほど短い動きで発動するが、その分わずかな動きのブレで
-        // 意図しない方向に判定されやすくなるため、ここでは下げない
         stroke-size = <200>;
         gesture-cooldown-ms = <150>;
 
-        move_left {
-            pattern = <GESTURE_LEFT>;
-            bindings = <&kp LG(LA(LEFT_ARROW))>;   // Cmd+Option+←
-        };
-        move_right {
+        next_tab {
             pattern = <GESTURE_RIGHT>;
-            bindings = <&kp LG(LA(RIGHT_ARROW))>;  // Cmd+Option+→
+            bindings = <&kp TAB>;       // Tab (Cmdと合わさってCmd+Tab)
         };
-        move_up {
-            pattern = <GESTURE_UP>;
-            bindings = <&kp LG(LA(UP_ARROW))>;     // Cmd+Option+↑
-        };
-        move_down {
-            pattern = <GESTURE_DOWN>;
-            bindings = <&kp LG(LA(DOWN_ARROW))>;   // Cmd+Option+↓
+        prev_tab {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LS(TAB)>;   // Shift+Tab (Cmdと合わさってCmd+Shift+Tab)
         };
     };
 
