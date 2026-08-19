@@ -22,7 +22,7 @@
         enable-eager-mode;
         always-active;
         suppress-movement;
-        stroke-size = <100>;
+        stroke-size = <50>;
         gesture-cooldown-ms = <100>;
 
         next_tab {
