@@ -66,26 +66,6 @@
             bindings = <&kp LG(LA(DOWN_ARROW))>;   // Cmd+Option+↓
         };
     };
-
-    // レイヤー3用のジェスチャー設定(左右のみ)
-    layer3_gesture: layer3_gesture {
-        compatible = "zmk,input-processor-mouse-gesture";
-        #input-processor-cells = <0>;
-        enable-eager-mode;
-        always-active;
-        suppress-movement;
-        // 左右2方向だけなので既定値(200)のままで問題ない
-        // gesture-cooldown-msは指定せず既定値(500ms)のまま
-
-        move_left {
-            pattern = <GESTURE_LEFT>;
-            bindings = <&kp LG(LEFT_ARROW)>;   // Cmd+←
-        };
-        move_right {
-            pattern = <GESTURE_RIGHT>;
-            bindings = <&kp LG(RIGHT_ARROW)>;  // Cmd+→
-        };
-    };
 };
 
 &zip_mouse_gesture {
@@ -182,12 +162,5 @@
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
             <&layer7_gesture>;
-    };
-
-    gesture_layer3 {
-        layers = <3>;
-        input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
-            <&layer3_gesture>;
     };
 };
