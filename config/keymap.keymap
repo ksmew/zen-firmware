@@ -280,8 +280,8 @@
         layer_0 {
             bindings = <
 &screenshot                    &kp Q                  &kp W                  &kp E                         &kp R                         &kp T                             &kp Y                               &kp U                           &kp I                           &kp O                   &kp P                       &kp LC(UP_ARROW)
-&home_row_lt_left_cmd 0 COLON  &home_row_lt_left 5 A  &home_row_lt_left 4 S  &home_row_mt_left LEFT_ALT D  &home_row_mt_left LEFT_GUI F  &home_row_mt_left LEFT_CONTROL G  &home_row_mt_right RIGHT_CONTROL H  &home_row_mt_right RIGHT_GUI J  &home_row_mt_right RIGHT_ALT K  &home_row_lt_right 3 L  &home_row_lt_right 3 MINUS  &kp SEMICOLON
-&kp EQUAL                      &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &kp LA(LS(LEFT_ARROW))              &kp RA(RS(RIGHT_ARROW))         &kp N                           &kp M                   &kp COMMA                   &kp PERIOD        &kp SLASH  &kp EQUAL
+&home_row_lt_left_cmd 0 COLON  &home_row_lt_left 5 A  &home_row_lt_left 4 S  &home_row_mt_left LEFT_ALT D  &home_row_mt_left LEFT_GUI F  &home_row_mt_left LEFT_CONTROL G  &home_row_mt_right RIGHT_CONTROL H  &home_row_mt_right RIGHT_GUI J  &home_row_mt_right RIGHT_ALT K  &home_row_lt_right 3 L  &home_row_lt_right 3 MINUS  &kp LG(W)
+&kp EQUAL                      &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &kp LA(LS(LEFT_ARROW))              &kp RA(RS(RIGHT_ARROW))         &kp N                           &kp M                   &kp COMMA                   &kp PERIOD        &kp SLASH  &kp RG(RS(T))
 &kp LG(LC(Q))                  &kp LA(L)              &kp LA(C)              &lt 6 LA(V)                   &lt 2 SPACE                   &kp BACKSPACE                     &kp LEFT_SHIFT                      &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RG(RS(N))           &kp RA(RC(N))               &kp RG(RA(U))
             >;
         };
@@ -306,19 +306,19 @@
 
         layer_3 {
             bindings = <
-&trans  &kp F4   &kp F3   &kp F2   &kp F1  &trans  &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &kp F8   &kp F7   &kp F6   &kp F5  &trans  &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &kp F12  &kp F11  &kp F10  &kp F9  &trans  &kp LG(PLUS)   &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans   &trans   &trans   &trans  &trans  &kp LG(MINUS)  &trans  &trans  &trans  &trans  &trans
+&trans  &kp F3   &kp F2   &kp F1   &trans  &trans  &trans         &trans  &trans  &trans  &trans  &trans
+&trans  &kp F6   &kp F5   &kp F4   &trans  &trans  &trans         &trans  &trans  &trans  &trans  &trans
+&trans  &kp F9   &kp F8   &kp F7   &trans  &trans  &kp LG(PLUS)   &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp F12  &kp F11  &kp F10  &trans  &trans  &kp LG(MINUS)  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &slack_cmd      &kp PIPE         &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN     &kp TILDE        &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                &trans                 &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp AMPERSAND  &kp HASH  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp EXCLAMATION       &trans                 &trans          &trans           &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp DOUBLE_QUOTES  &kp SQT          &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp COLON          &kp SEMICOLON    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                &trans                 &kp LEFT_BRACE     &kp RIGHT_BRACE  &kp AMPERSAND  &kp BACKSLASH  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp EXCLAMATION       &trans                 &trans             &trans           &trans
             >;
         };
 
@@ -341,6 +341,15 @@
         };
 
         layer_7 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        layer_8 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
