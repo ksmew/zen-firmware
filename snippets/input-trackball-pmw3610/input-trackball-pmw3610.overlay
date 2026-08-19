@@ -22,8 +22,8 @@
         enable-eager-mode;
         always-active;
         suppress-movement;
-        stroke-size = <200>;
-        gesture-cooldown-ms = <150>;
+        stroke-size = <100>;
+        gesture-cooldown-ms = <100>;
 
         next_tab {
             pattern = <GESTURE_RIGHT>;
@@ -43,11 +43,8 @@
         enable-eager-mode;
         always-active;
         suppress-movement;
-        // 4方向の判定精度を優先するため、既定値(200)のままにする。
-        // 値を小さくするほど短い動きで発動するが、その分わずかな動きのブレで
-        // 意図しない方向に判定されやすくなるため、ここでは下げない
-        stroke-size = <200>;
-        // gesture-cooldown-msは指定せず既定値(500ms)のまま
+        stroke-size = <100>;
+        gesture-cooldown-ms = <150>;
 
         move_left {
             pattern = <GESTURE_LEFT>;
@@ -73,7 +70,7 @@
     always-active;                // レイヤー5に入っている間、起動キーなしで自動的にジェスチャー認識をONにする
     suppress-movement;            // ジェスチャー中はカーソルを動かさない(素通しでマウスが動いてしまうのを防ぐ)
     stroke-size = <100>;           // 1回のジェスチャーと認識される移動量の閾値。小さくするほど、長くスーッと動かした時に短い距離で連続して切り替わるようになる
-    gesture-cooldown-ms = <120>;   // 連続発火を許可する最短間隔(時間ベース)。スーッと動かした時にこの時間が経つまで次の発動をブロックしてしまうため、stroke-sizeだけでなくこちらも短縮。ただしシャッ!という一瞬の動き全体はこれより短い時間で終わる想定のため、1回しか発動しない挙動は維持されるはず
+    gesture-cooldown-ms = <100>;   // 連続発火を許可する最短間隔(時間ベース)。スーッと動かした時にこの時間が経つまで次の発動をブロックしてしまうため、stroke-sizeだけでなくこちらも短縮。ただしシャッ!という一瞬の動き全体はこれより短い時間で終わる想定のため、1回しか発動しない挙動は維持されるはず
 
     prev_tab {
         pattern = <GESTURE_LEFT>;
