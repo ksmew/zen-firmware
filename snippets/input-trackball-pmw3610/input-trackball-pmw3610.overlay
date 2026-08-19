@@ -23,7 +23,7 @@
         always-active;
         suppress-movement;
         stroke-size = <50>;
-        gesture-cooldown-ms = <100>;
+        gesture-cooldown-ms = <50>;
 
         next_tab {
             pattern = <GESTURE_RIGHT>;
