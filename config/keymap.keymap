@@ -1,8 +1,8 @@
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 80  // 既定10の8倍(ズームイン/アウトの速度アップ用)
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 80  // 既定10の8倍(ズームイン/アウトの速度アップ用)
 #include <dt-bindings/zmk/pointing.h>
 
 / {
@@ -175,7 +175,7 @@
 
         // Ctrlを押しながら下スクロールし続ける(ズームイン)。離すと両方止まる
 
-        zoom_in: zoom_in {
+        zoomout: zoom_in {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -194,7 +194,7 @@
 
         // Ctrlを押しながら上スクロールし続ける(ズームアウト)。離すと両方止まる
 
-        zoom_out: zoom_out {
+        zoomin: zoom_out {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -329,7 +329,7 @@
 &screenshot                    &kp Q                  &kp W                  &kp E                         &kp R                         &kp T                             &kp Y                               &kp U                           &kp I                           &kp O                   &kp P                       &kp LC(UP_ARROW)
 &home_row_lt_left_cmd 0 COLON  &home_row_lt_left 5 A  &home_row_lt_left 4 S  &home_row_mt_left LEFT_ALT D  &home_row_mt_left LEFT_GUI F  &home_row_mt_left LEFT_CONTROL G  &home_row_mt_right RIGHT_CONTROL H  &home_row_mt_right RIGHT_GUI J  &home_row_mt_right RIGHT_ALT K  &home_row_lt_right 8 L  &home_row_lt_right 3 MINUS  &kp LG(W)
 &kp EQUAL                      &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &kp LA(LS(LEFT_ARROW))              &kp RA(RS(RIGHT_ARROW))         &kp N                           &kp M                   &kp COMMA                   &kp PERIOD        &kp SLASH  &kp RG(RS(T))
-&kp LG(LC(Q))                  &zoom_out              &zoom_in               &lt 6 LC(DOWN)                &lt 2 SPACE                   &kp BACKSPACE                     &kp LEFT_SHIFT                      &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RG(RS(N))           &kp RA(RC(N))               &kp RG(RA(U))
+&kp LG(LC(Q))                  &zoomout               &zoomin                &lt 6 LC(DOWN)                &lt 2 SPACE                   &kp BACKSPACE                     &kp LEFT_SHIFT                      &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RG(RS(N))           &kp RA(RC(N))               &kp RG(RA(U))
             >;
         };
 
