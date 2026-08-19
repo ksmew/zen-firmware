@@ -105,13 +105,6 @@
             label = "LINE";
         };
 
-        slack_cmd: slack_cmd {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp COLON &kp AT_SIGN>;
-            label = "SLACK_CMD";
-        };
-
         // 押している間、Cmdを押しっぱなしにしつつレイヤー7に入る。
         // 離すと両方同時に解除する
 
@@ -162,6 +155,20 @@
                 <&kp LEFT_ALT>;
 
             label = "ALT_CLICK";
+        };
+
+        h5: h5 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG2 &kp HASH &kp HASH &kp HASH &kp HASH &kp HASH &kp SPACE &kp LANG1>;
+            label = "H5";
+        };
+
+        h6: h6 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG2 &kp HASH &kp HASH &kp HASH &kp HASH &kp HASH &kp HASH &kp SPACE &kp LANG1>;
+            label = "H6";
         };
     };
 
@@ -280,9 +287,9 @@
         layer_0 {
             bindings = <
 &screenshot                    &kp Q                  &kp W                  &kp E                         &kp R                         &kp T                             &kp Y                               &kp U                           &kp I                           &kp O                   &kp P                       &kp LC(UP_ARROW)
-&home_row_lt_left_cmd 0 COLON  &home_row_lt_left 5 A  &home_row_lt_left 4 S  &home_row_mt_left LEFT_ALT D  &home_row_mt_left LEFT_GUI F  &home_row_mt_left LEFT_CONTROL G  &home_row_mt_right RIGHT_CONTROL H  &home_row_mt_right RIGHT_GUI J  &home_row_mt_right RIGHT_ALT K  &home_row_lt_right 3 L  &home_row_lt_right 3 MINUS  &kp LG(W)
+&home_row_lt_left_cmd 0 COLON  &home_row_lt_left 5 A  &home_row_lt_left 4 S  &home_row_mt_left LEFT_ALT D  &home_row_mt_left LEFT_GUI F  &home_row_mt_left LEFT_CONTROL G  &home_row_mt_right RIGHT_CONTROL H  &home_row_mt_right RIGHT_GUI J  &home_row_mt_right RIGHT_ALT K  &home_row_lt_right 8 L  &home_row_lt_right 3 MINUS  &kp LG(W)
 &kp EQUAL                      &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &kp LA(LS(LEFT_ARROW))              &kp RA(RS(RIGHT_ARROW))         &kp N                           &kp M                   &kp COMMA                   &kp PERIOD        &kp SLASH  &kp RG(RS(T))
-&kp LG(LC(Q))                  &kp LA(L)              &kp LA(C)              &lt 6 LA(V)                   &lt 2 SPACE                   &kp BACKSPACE                     &kp LEFT_SHIFT                      &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RG(RS(N))           &kp RA(RC(N))               &kp RG(RA(U))
+&kp LG(LC(Q))                  &kp LG(COMMA)          &kp LA(C)              &lt 6 LA(V)                   &lt 2 SPACE                   &kp BACKSPACE                     &kp LEFT_SHIFT                      &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RG(RS(N))           &kp RA(RC(N))               &kp RG(RA(U))
             >;
         };
 
@@ -315,10 +322,10 @@
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp DOUBLE_QUOTES  &kp SQT          &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp COLON          &kp SEMICOLON    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                &trans                 &kp LEFT_BRACE     &kp RIGHT_BRACE  &kp AMPERSAND  &kp BACKSLASH  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp EXCLAMATION       &trans                 &trans             &trans           &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans       &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp DOUBLE_QUOTES  &kp SQT          &kp GRAVE
+&trans  &trans  &trans  &trans  &trans  &trans  &kp AT_SIGN  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp COLON          &kp SEMICOLON    &kp TILDE
+&trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans                &trans                 &kp LEFT_BRACE     &kp RIGHT_BRACE  &kp AMPERSAND  &kp BACKSLASH  &kp PIPE
+&trans  &trans  &trans  &trans  &trans  &trans  &trans       &kp EXCLAMATION       &trans                 &trans             &trans           &trans
             >;
         };
 
@@ -333,10 +340,10 @@
 
         layer_6 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans        &trans  &trans     &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &bullet  &number_list  &line   &checkbox  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans        &h1     &h2        &h3     &h4  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans        &trans  &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -351,10 +358,10 @@
 
         layer_8 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans     &trans    &trans        &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &checkbox  &line     &number_list  &bullet  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &h4        &h3       &h2           &h1      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans     &kp HASH  &h6           &h5      &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
