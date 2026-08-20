@@ -353,10 +353,10 @@
 
         layer_3 {
             bindings = <
-&trans  &kp F3   &kp F2   &kp F1   &trans  &trans  &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &kp F6   &kp F5   &kp F4   &trans  &trans  &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &kp F9   &kp F8   &kp F7   &trans  &trans  &kp LG(PLUS)   &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp F12  &kp F11  &kp F10  &trans  &trans  &kp LG(MINUS)  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp F3   &kp F2   &kp F1   &trans  &trans         &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp F6   &kp F5   &kp F4   &trans  &trans         &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp F9   &kp F8   &kp F7   &trans  &kp LG(PLUS)   &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp F12  &kp F11  &kp F10  &trans  &kp LG(MINUS)  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
