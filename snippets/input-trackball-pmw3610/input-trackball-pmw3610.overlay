@@ -13,31 +13,8 @@
         track-remainders;
     };
 
-    // レイヤー7用のジェスチャー設定。SQTキーのホールドでCmdが押しっぱなしに
-    // なる仕組み(keymap.keymap側のcmd_layer7マクロ)と組み合わせて使うため、
-    // ここでは素のTAB/Shift+TABを送り、Cmd+Tab/Cmd+Shift+Tabとして機能させる
+    // レイヤー7用のジェスチャー設定
     layer7_gesture: layer7_gesture {
-        compatible = "zmk,input-processor-mouse-gesture";
-        #input-processor-cells = <0>;
-        enable-eager-mode;
-        always-active;
-        suppress-movement;
-        stroke-size = <50>;
-        gesture-cooldown-ms = <50>;
-
-        next_tab {
-            pattern = <GESTURE_RIGHT>;
-            bindings = <&kp TAB>;       // Tab (Cmdと合わさってCmd+Tab)
-        };
-        prev_tab {
-            pattern = <GESTURE_LEFT>;
-            bindings = <&kp LS(TAB)>;   // Shift+Tab (Cmdと合わさってCmd+Shift+Tab)
-        };
-    };
-
-    // レイヤー4用のジェスチャー設定(ウィンドウ移動、4方向)。
-    // Sキーはcmdを押しっぱなしにしないため、各バインディングにCmd+Optionを直接書く
-    layer4_gesture: layer4_gesture {
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
         enable-eager-mode;
@@ -46,40 +23,62 @@
         stroke-size = <100>;
         gesture-cooldown-ms = <150>;
 
-        move_left {
-            pattern = <GESTURE_LEFT>;
-            bindings = <&kp LG(LA(LEFT_ARROW))>;   // Cmd+Option+←
-        };
-        move_right {
+        next_tab {
             pattern = <GESTURE_RIGHT>;
-            bindings = <&kp LG(LA(RIGHT_ARROW))>;  // Cmd+Option+→
+            bindings = <&kp LS(LA(RIGHT_ARROW))>;  // Shift+Alt+→
         };
-        move_up {
-            pattern = <GESTURE_UP>;
-            bindings = <&kp LG(LA(UP_ARROW))>;     // Cmd+Option+↑
+        prev_tab {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LS(LA(LEFT_ARROW))>;   // Shift+Alt+←
         };
-        move_down {
-            pattern = <GESTURE_DOWN>;
-            bindings = <&kp LG(LA(DOWN_ARROW))>;   // Cmd+Option+↓
+    };
+
+    // レイヤー4用のジェスチャー設定(Chromeタブ切り替え、左右2方向)。
+    // レイヤー5と中身を入れ替えたため、旧レイヤー5の内容がここに入っている
+    layer4_gesture: layer4_gesture {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        enable-eager-mode;
+        always-active;
+        suppress-movement;
+        stroke-size = <100>;
+        gesture-cooldown-ms = <100>;
+
+        prev_tab {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LC(LS(TAB))>;  // Ctrl+Shift+Tab (Chromeで左のタブへ)
+        };
+        next_tab {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LC(TAB)>;      // Ctrl+Tab (Chromeで右のタブへ)
         };
     };
 };
 
+// レイヤー5用のジェスチャー設定(ウィンドウ移動、4方向)。
+// レイヤー4と中身を入れ替えたため、旧レイヤー4の内容がここに入っている
 &zip_mouse_gesture {
     enable-eager-mode;
     always-active;                // レイヤー5に入っている間、起動キーなしで自動的にジェスチャー認識をONにする
     suppress-movement;            // ジェスチャー中はカーソルを動かさない(素通しでマウスが動いてしまうのを防ぐ)
     stroke-size = <100>;           // 1回のジェスチャーと認識される移動量の閾値。小さくするほど、長くスーッと動かした時に短い距離で連続して切り替わるようになる
-    gesture-cooldown-ms = <100>;   // 連続発火を許可する最短間隔(時間ベース)。スーッと動かした時にこの時間が経つまで次の発動をブロックしてしまうため、stroke-sizeだけでなくこちらも短縮。ただしシャッ!という一瞬の動き全体はこれより短い時間で終わる想定のため、1回しか発動しない挙動は維持されるはず
+    gesture-cooldown-ms = <150>;   // 連続発火を許可する最短間隔(時間ベース)
 
-    prev_tab {
+    move_left {
         pattern = <GESTURE_LEFT>;
-        bindings = <&kp LC(LS(TAB))>;  // Ctrl+Shift+Tab (Chromeで左のタブへ)
+        bindings = <&kp LG(LA(LEFT_ARROW))>;   // Cmd+Option+←
     };
-
-    next_tab {
+    move_right {
         pattern = <GESTURE_RIGHT>;
-        bindings = <&kp LC(TAB)>;      // Ctrl+Tab (Chromeで右のタブへ)
+        bindings = <&kp LG(LA(RIGHT_ARROW))>;  // Cmd+Option+→
+    };
+    move_up {
+        pattern = <GESTURE_UP>;
+        bindings = <&kp LG(LA(UP_ARROW))>;     // Cmd+Option+↑
+    };
+    move_down {
+        pattern = <GESTURE_DOWN>;
+        bindings = <&kp LG(LA(DOWN_ARROW))>;   // Cmd+Option+↓
     };
 };
 
