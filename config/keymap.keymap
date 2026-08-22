@@ -38,6 +38,16 @@
             bindings = <&kp RG(RIGHT_ARROW)>;
             key-positions = <20 21>;
         };
+
+        cmd_clk {
+            bindings = <&cmd_click>;
+            key-positions = <19 16>;
+        };
+
+        alt_clk {
+            bindings = <&alt_click>;
+            key-positions = <20 16>;
+        };
     };
 
     macros {
@@ -367,17 +377,17 @@
             bindings = <
 &copylink                  &kp Q                  &kp W                  &kp E                         &kp R                         &kp T                             &kp Y                               &kp U                           &kp I                           &kp O                   &kp P                       &screenshot
 &home_row_lt_left 7 LG(C)  &home_row_lt_left 5 A  &home_row_lt_left 4 S  &home_row_mt_left LEFT_ALT D  &home_row_mt_left LEFT_GUI F  &home_row_mt_left LEFT_CONTROL G  &home_row_mt_right RIGHT_CONTROL H  &home_row_mt_right RIGHT_GUI J  &home_row_mt_right RIGHT_ALT K  &home_row_lt_right 8 L  &home_row_lt_right 3 MINUS  &kp LG(V)
-&kp LG(Z)                  &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &kp LC(DOWN_ARROW)                  &kp RC(UP_ARROW)                &kp N                           &kp M                   &kp COMMA                   &kp PERIOD     &kp SLASH  &kp RA(H)
-&kp LG(LC(Q))              &zoomout               &zoomin                &lt_rightclk 6 RCLK           &lt_mkp 2 LCLK                &kp BACKSPACE                     &mt LEFT_SHIFT SPACE                &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RA(RC(N))           &kp RA(RG(N))               &kp RG(RA(U))
+&kp LA(H)                  &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &kp LC(DOWN_ARROW)                  &kp RC(UP_ARROW)                &kp N                           &kp M                   &kp COMMA                   &kp PERIOD     &kp SLASH  &kp RA(V)
+&kp LG(LC(Q))              &zoomout               &zoomin                &lt 6 LG(Z)                   &lt 2 SPACE                   &kp BACKSPACE                     &mt LEFT_SHIFT SPACE                &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RA(RC(N))           &kp RA(RG(N))               &kp RG(RA(U))
             >;
         };
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &mkp RCLK  &mkp LCLK  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
