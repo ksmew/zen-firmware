@@ -38,16 +38,6 @@
             bindings = <&kp RG(RIGHT_ARROW)>;
             key-positions = <20 21>;
         };
-
-        cmd_clk {
-            bindings = <&cmd_click>;
-            key-positions = <16 19>;
-        };
-
-        alt_clk {
-            bindings = <&alt_click>;
-            key-positions = <16 20>;
-        };
     };
 
     macros {
@@ -228,6 +218,13 @@
 
             label = "ZOOM_OUT";
         };
+
+        copylink: copylink {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(L) &kp LG(C)>;
+            label = "COPYLINK";
+        };
     };
 
     behaviors {
@@ -342,14 +339,14 @@
         // (LANG2を1回送ってからレイヤー2)。既存のlt(コアビヘイビア)を
         // 直接使えないため、同じ役割の専用ビヘイビアとして用意する
 
-        lt_space_eisu: lt_space_eisu {
+        lt_mkp: lt_mkp {
             compatible = "zmk,behavior-hold-tap";
-            label = "LT_SPACE_EISU";
-            bindings = <&lang2_layer2>, <&kp>;
+            label = "LT_MKP";
+            bindings = <&mo>, <&mkp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
+            tapping-term-ms = <90000>;
+            quick-tap-ms = <175>;
         };
     };
 
@@ -358,19 +355,19 @@
 
         layer_0 {
             bindings = <
-&screenshot                    &kp Q                  &kp W                  &kp E                         &kp R                         &kp T                             &kp Y                               &kp U                           &kp I                           &kp O                   &kp P                       &kp LC(UP_ARROW)
-&home_row_lt_left_cmd 0 COLON  &home_row_lt_left 5 A  &home_row_lt_left 4 S  &home_row_mt_left LEFT_ALT D  &home_row_mt_left LEFT_GUI F  &home_row_mt_left LEFT_CONTROL G  &home_row_mt_right RIGHT_CONTROL H  &home_row_mt_right RIGHT_GUI J  &home_row_mt_right RIGHT_ALT K  &home_row_lt_right 8 L  &home_row_lt_right 3 MINUS  &kp LG(W)
-&kp EQUAL                      &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &kp LA(LS(LEFT_ARROW))              &kp RA(RS(RIGHT_ARROW))         &kp N                           &kp M                   &kp COMMA                   &kp PERIOD        &kp SLASH  &kp RG(RS(T))
-&kp LG(LC(Q))                  &zoomout               &zoomin                &lt 6 LC(DOWN)                &lt_space_eisu 0 SPACE                   &kp BACKSPACE                     &kp LEFT_SHIFT                      &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RA(RC(N))           &kp RA(RG(N))               &kp RG(RA(U))
+&copylink                  &kp Q                  &kp W                  &kp E                         &kp R                         &kp T                             &kp Y                               &kp U                           &kp I                           &kp O                   &kp P                       &screenshot
+&home_row_lt_left 7 LG(C)  &home_row_lt_left 5 A  &home_row_lt_left 4 S  &home_row_mt_left LEFT_ALT D  &home_row_mt_left LEFT_GUI F  &home_row_mt_left LEFT_CONTROL G  &home_row_mt_right RIGHT_CONTROL H  &home_row_mt_right RIGHT_GUI J  &home_row_mt_right RIGHT_ALT K  &home_row_lt_right 8 L  &home_row_lt_right 3 MINUS  &kp LG(V)
+&kp LG(Z)                  &kp Z                  &kp X                  &kp C                         &kp V                         &kp B                             &kp LA(LS(LEFT_ARROW))              &kp RA(RS(RIGHT_ARROW))         &kp N                           &kp M                   &kp COMMA                   &kp PERIOD     &kp SLASH  &kp RA(H)
+&kp LG(LC(Q))              &zoomout               &zoomin                &lt_mkp 6 RCLK                &lt_mkp 2 LCLK                &kp BACKSPACE                     &mt LEFT_SHIFT SPACE                &mt RIGHT_SHIFT ENTER           &kp F12                         &kp RA(RC(N))           &kp RA(RG(N))               &kp RG(RA(U))
             >;
         };
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &mkp RCLK  &mkp LCLK  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
