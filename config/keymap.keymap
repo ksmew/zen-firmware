@@ -232,7 +232,7 @@
         copylink: copylink {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(L) &kp LG(C) &kp ESCAPE>;
+            bindings = <&kp LG(L) &kp LG(C) &kp ESCAPE &kp ESCAPE>;
             label = "COPYLINK";
         };
     };
