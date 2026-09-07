@@ -26,7 +26,7 @@
 
         tab {
             bindings = <&kp TAB>;
-            key-positions = <4 3>;
+            key-positions = <8 9>;
         };
 
         cmd_left {
@@ -41,12 +41,12 @@
 
         cmd_clk {
             bindings = <&cmd_click>;
-            key-positions = <19 16>;
+            key-positions = <19 3>;
         };
 
         alt_clk {
             bindings = <&alt_click>;
-            key-positions = <20 16>;
+            key-positions = <20 3>;
         };
     };
 
@@ -384,10 +384,10 @@
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &mkp RCLK  &mkp LCLK  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &mkp RCLK  &mkp LCLK  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
