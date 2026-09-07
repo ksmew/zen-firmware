@@ -393,27 +393,27 @@
 
         layer_2 {
             bindings = <
-&trans  &kp SLASH   &kp ASTERISK  &kp MINUS  &kp PLUS    &trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans        &trans
-&trans  &kp DOLLAR  &kp PERCENT   &kp COMMA  &kp PERIOD  &trans  &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL     &trans
-&trans  &trans      &trans        &trans     &trans      &trans  &trans  &trans        &trans        &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &trans  &trans
-&trans  &trans      &trans        &trans     &trans      &trans  &trans  &kp NUMBER_0  &trans        &trans        &trans        &trans
+&trans  &kp SLASH  &kp ASTERISK  &kp MINUS  &kp PLUS    &trans  &trans     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans        &trans
+&trans  &kp COLON  &kp PERCENT   &kp COMMA  &kp PERIOD  &trans  &kp EQUAL  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans        &trans
+&trans  &trans     &trans        &trans     &trans      &trans  &trans     &trans        &trans        &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &trans  &trans
+&trans  &trans     &trans        &trans     &trans      &trans  &trans     &kp NUMBER_0  &trans        &trans        &trans        &trans
             >;
         };
 
         layer_3 {
             bindings = <
-&trans  &trans  &kp F3   &kp F2   &kp F1   &trans  &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp F6   &kp F5   &kp F4   &trans  &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp F9   &kp F8   &kp F7   &trans  &kp LG(PLUS)   &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp F12  &kp F11  &kp F10  &trans  &kp LG(MINUS)  &trans  &trans  &trans  &trans  &trans
+&trans  &trans         &kp F3         &kp F2   &kp F1   &trans  &trans         &trans  &trans  &trans  &trans  &trans
+&trans  &trans         &kp F6         &kp F5   &kp F4   &trans  &trans         &trans  &trans  &trans  &trans  &trans
+&trans  &trans         &kp F9         &kp F8   &kp F7   &trans  &kp LG(PLUS)   &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp C_BRI_DEC  &kp C_BRI_INC  &kp F11  &kp F10  &trans  &kp LG(MINUS)  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans       &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp DOUBLE_QUOTES  &kp SQT          &kp GRAVE
-&trans  &trans  &trans  &trans  &trans  &trans  &kp AT_SIGN  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp COLON          &kp SEMICOLON    &kp TILDE
-&trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans                &trans                 &kp LEFT_BRACE     &kp RIGHT_BRACE  &kp AMPERSAND  &kp BACKSLASH  &kp PIPE
+&trans  &trans  &trans  &trans  &trans  &trans  &kp HASH     &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp DOUBLE_QUOTES  &kp SQT          &kp GRAVE
+&trans  &trans  &trans  &trans  &trans  &trans  &kp AT_SIGN  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp COLON          &kp SEMICOLON    &kp DOLLAR
+&trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans                &kp AMPERSAND          &kp LEFT_BRACE     &kp RIGHT_BRACE  &kp TILDE   &kp BACKSLASH  &kp PIPE
 &trans  &trans  &trans  &trans  &trans  &trans  &trans       &kp EXCLAMATION       &trans                 &trans             &trans           &trans
             >;
         };
@@ -447,10 +447,10 @@
 
         layer_8 {
             bindings = <
-&trans  &trans     &trans    &trans        &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &checkbox  &line     &number_list  &bullet  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &h4        &h3       &h2           &h1      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans     &kp HASH  &h6           &h5      &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans             &trans           &trans        &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &checkbox          &line            &number_list  &bullet  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &h4                &h3              &h2           &h1      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp K_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &h6           &h5      &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
