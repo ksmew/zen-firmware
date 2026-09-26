@@ -13,8 +13,8 @@
         track-remainders;
     };
 
-    // レイヤー7用のジェスチャー設定
-    layer7_gesture: layer7_gesture {
+    // レイヤー3用のジェスチャー設定
+    layer3_gesture: layer3_gesture {
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
         enable-eager-mode;
@@ -51,6 +51,34 @@
         next_tab {
             pattern = <GESTURE_RIGHT>;
             bindings = <&kp LC(TAB)>;      // Ctrl+Tab (Chromeで右のタブへ)
+        };
+    };
+
+    // レイヤー7用のジェスチャー設定(Ctrl+矢印、4方向)
+    layer7_gesture: layer7_gesture {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        enable-eager-mode;
+        always-active;
+        suppress-movement;
+        stroke-size = <100>;
+        gesture-cooldown-ms = <150>;
+
+        move_left {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LC(LEFT_ARROW)>;   // Ctrl+←
+        };
+        move_right {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LC(RIGHT_ARROW)>;  // Ctrl+→
+        };
+        move_up {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LC(UP_ARROW)>;     // Ctrl+↑
+        };
+        move_down {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LC(DOWN_ARROW)>;   // Ctrl+↓
         };
     };
 };
@@ -151,6 +179,13 @@
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
             <&layer4_gesture>;
+    };
+
+    gesture_layer3 {
+        layers = <3>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
+            <&layer3_gesture>;
     };
 
     gesture_layer7 {
