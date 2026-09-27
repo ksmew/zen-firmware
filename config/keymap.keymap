@@ -403,19 +403,19 @@
 
         layer_2 {
             bindings = <
-&trans  &kp SLASH  &kp ASTERISK  &kp MINUS  &kp PLUS    &trans  &trans     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans        &trans
-&trans  &kp COLON  &kp PERCENT   &kp COMMA  &kp PERIOD  &trans  &kp EQUAL  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans        &trans
-&trans  &trans     &trans        &trans     &trans      &trans  &trans     &trans        &trans        &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &trans  &trans
-&trans  &trans     &trans        &trans     &trans      &trans  &trans     &kp NUMBER_0  &trans        &trans        &trans        &trans
+&kp LEFT_SHIFT  &kp SLASH  &kp ASTERISK  &kp MINUS  &kp PLUS    &trans  &trans     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans        &trans
+&kp LEFT_GUI    &kp COLON  &kp PERCENT   &kp COMMA  &kp PERIOD  &trans  &kp EQUAL  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans        &trans
+&trans          &trans     &trans        &trans     &trans      &trans  &trans     &trans        &trans        &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &trans  &trans
+&trans          &trans     &trans        &trans     &trans      &trans  &trans     &kp NUMBER_0  &trans        &trans        &trans        &trans
             >;
         };
 
         layer_3 {
             bindings = <
-&trans  &trans         &kp F3         &kp F2   &kp F1   &trans  &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &trans         &kp F6         &kp F5   &kp F4   &trans  &trans         &trans  &trans  &trans  &trans  &trans
-&trans  &trans         &kp F9         &kp F8   &kp F7   &trans  &kp LG(PLUS)   &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp C_BRI_DEC  &kp C_BRI_INC  &kp F11  &kp F10  &trans  &kp LG(MINUS)  &trans  &trans  &trans  &trans  &trans
+&trans  &trans         &kp F3         &kp F2   &kp F1   &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans         &kp F6         &kp F5   &kp F4   &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans         &kp F9         &kp F8   &kp F7   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp C_BRI_DEC  &kp C_BRI_INC  &kp F11  &kp F10  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -439,10 +439,10 @@
 
         layer_6 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp LEFT_GUI  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
