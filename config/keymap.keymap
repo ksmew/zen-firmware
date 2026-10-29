@@ -466,10 +466,10 @@
 
         layer_9 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans              &mkp LCLK            &mkp RCLK  &cmd_click  &alt_click
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp RG(LEFT_ARROW)  &kp RG(RIGHT_ARROW)  &mo 2      &mo 6       &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &to 0               &trans               &trans     &trans      &mo 4       &mo 5  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp RC(UP_ARROW)    &trans               &trans     &trans      &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans              &trans            &trans     &trans                   &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp RG(LEFT_ARROW)  &mkp LCLK         &mkp RCLK  &lt (2) RG(RIGHT_ARROW)  &mo 6      &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans              &to 0             &trans     &cmd_click               &kp RG(R)  &mo 4   &mo 5  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans              &kp RC(UP_ARROW)  &trans     &trans                   &trans     &trans
             >;
         };
     };
